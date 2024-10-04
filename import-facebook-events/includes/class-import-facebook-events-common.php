@@ -228,6 +228,42 @@ class Import_Facebook_Events_Common {
 	}
 
 	/**
+	 * Ubnbale to hyperlink in description
+	 *
+	 * @since  1.0.0
+	 * @return array
+	 */
+	public function ife_convert_text_to_hyperlink( $post_description = '' ){
+		if( !empty( $post_description ) ){
+
+			$url_pattern = '/\b(https?:\/\/[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/i';
+			
+			// Replace URLs with clickable links
+			$post_description = preg_replace($url_pattern, '<a href="$0" target="_blank" title="$0">$0</a>', $post_description);
+	
+			$search  = ['  ', '_ ', ' _'];
+			$replace = ['<br />', '<br />', '<br />'];
+			$post_description = str_replace($search, $replace, $post_description);
+		}
+		return $post_description;
+	}
+
+	/**
+	 * Remove the facebook event link in event desction
+	 *
+	 * @since  1.0.0
+	 * @return array
+	 */
+	public function ife_remove_facebook_link_in_event_description( $post_description = '', $event_id = '' ){
+
+		if ( !empty( $post_description ) && !empty( $event_id ) ) {
+			$event_url        = 'https://www.facebook.com/events/'.$event_id.'/';
+			$post_description = str_replace( $event_url, '', $post_description );
+		}
+		return $post_description;
+	}
+
+	/**
 	 * Get event source link.
 	 * 
 	 * @since    1.7.1

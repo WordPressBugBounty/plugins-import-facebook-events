@@ -2,16 +2,16 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Import Social Events 1.7.9\n"
+"Project-Id-Version: Import Social Events 1.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/import-facebook-events\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-08T11:05:36+00:00\n"
+"POT-Creation-Date: 2024-10-04T11:26:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.10.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: import-facebook-events\n"
 
 #. Plugin Name of the plugin
@@ -410,101 +410,101 @@ msgstr ""
 msgid "Facebook Events"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:278
+#: includes/class-import-facebook-events-common.php:314
 msgid "Invalid image URL"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:415
+#: includes/class-import-facebook-events-common.php:451
 msgid "Event(s) are imported successfully."
 msgstr ""
 
 #. translators: %d is numbers of event created.
 #. translators: %d is numbers of event Created.
-#: includes/class-import-facebook-events-common.php:418
+#: includes/class-import-facebook-events-common.php:454
 #: includes/class-import-facebook-events-list-table.php:102
 msgid "%d Created"
 msgstr ""
 
 #. translators: %d is numbers of event updated.
 #. translators: %d is numbers of event Updated.
-#: includes/class-import-facebook-events-common.php:422
+#: includes/class-import-facebook-events-common.php:458
 #: includes/class-import-facebook-events-list-table.php:106
 msgid "%d Updated"
 msgstr ""
 
 #. translators: %d is numbers of event skipped.
-#: includes/class-import-facebook-events-common.php:426
+#: includes/class-import-facebook-events-common.php:462
 msgid "%d Skipped (Already exists)"
 msgstr ""
 
 #. translators: %d is numbers of event skipped Trashed.
 #. translators: %d is numbers of event skipped Trashed .
-#: includes/class-import-facebook-events-common.php:430
+#: includes/class-import-facebook-events-common.php:466
 #: includes/class-import-facebook-events-list-table.php:114
 msgid "%d Skipped (Already exists in Trash)"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:437
+#: includes/class-import-facebook-events-common.php:473
 msgid "Manual Import"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:510
+#: includes/class-import-facebook-events-common.php:546
 msgid "Once Hourly"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:513
+#: includes/class-import-facebook-events-common.php:549
 msgid "Twice Daily"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:516
+#: includes/class-import-facebook-events-common.php:552
 msgid "Once Daily"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:519
+#: includes/class-import-facebook-events-common.php:555
 msgid "Once Weekly"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:522
+#: includes/class-import-facebook-events-common.php:558
 msgid "Once a Month"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:570
+#: includes/class-import-facebook-events-common.php:606
 msgid "One-time Import"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:571
+#: includes/class-import-facebook-events-common.php:607
 msgid "Scheduled Import"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:630
+#: includes/class-import-facebook-events-common.php:666
 msgid "Status"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:635
+#: includes/class-import-facebook-events-common.php:671
 msgid "Published"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:638
+#: includes/class-import-facebook-events-common.php:674
 msgid "Pending"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:641
+#: includes/class-import-facebook-events-common.php:677
 msgid "Draft"
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:733
+#: includes/class-import-facebook-events-common.php:769
 msgid "Your current \"Import Facebok Event Pro\" add-on is not competible with Free plugin. Please Upgrade Pro latest to work event importing Flawlessly."
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:750
+#: includes/class-import-facebook-events-common.php:786
 msgid "The Access Token has been invalidated because the user changed their password or Facebook has changed the session for security reasons. Can you please Authorize/Reauthorize your Facebook account from <strong>Facebook Import</strong> > <strong> <a style=\"text-decoration: none;\" href=\""
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:783
+#: includes/class-import-facebook-events-common.php:819
 msgid "Available in Pro version."
 msgstr ""
 
-#: includes/class-import-facebook-events-common.php:783
+#: includes/class-import-facebook-events-common.php:819
 msgid "Upgrade to PRO"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgstr ""
 msgid "Event Date"
 msgstr ""
 
-#: includes/class-import-facebook-events-cpt.php:914
+#: includes/class-import-facebook-events-cpt.php:916
 msgid "No Events are found."
 msgstr ""
 
@@ -997,87 +997,66 @@ msgstr ""
 msgid "Facebook Page"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:36
-msgid "Facebook Group"
-msgstr ""
-
-#: templates/admin/facebook-import-events.php:38
-#: templates/admin/facebook-import-events.php:104
+#: templates/admin/facebook-import-events.php:39
+#: templates/admin/facebook-import-events.php:105
 msgid "My Pages"
 msgstr ""
 
 #. translators: please ignore %1$s and  %2$s.
-#: templates/admin/facebook-import-events.php:45
+#: templates/admin/facebook-import-events.php:46
 msgid "Select Event source. %1$s, %2$s ( import events belonging to a Facebook organization or a Facebook page )."
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:46
+#: templates/admin/facebook-import-events.php:47
 msgid "1. by Facebook Event ID"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:47
+#: templates/admin/facebook-import-events.php:48
 msgid "2. Facebook Organization or Page"
 msgstr ""
 
-#. translators: please ignore %1$s and  %2$s.
-#: templates/admin/facebook-import-events.php:55
-msgid "%1$s (Import events from Facebook group)"
-msgstr ""
-
-#: templates/admin/facebook-import-events.php:56
-msgid "3. Facebook Group"
-msgstr ""
-
-#: templates/admin/facebook-import-events.php:66
+#: templates/admin/facebook-import-events.php:67
 msgid "Facebook Event IDs"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:71
+#: templates/admin/facebook-import-events.php:72
 msgid "One event ID per line, ( Eg. Event ID for https://www.facebook.com/events/123456789/ is \"123456789\" )."
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:78
+#: templates/admin/facebook-import-events.php:79
 msgid "Page username / ID to fetch events from"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:83
+#: templates/admin/facebook-import-events.php:84
 msgid " Eg. username for https://www.facebook.com/xylusinfo/ is \"xylusinfo\"."
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:91
-msgid "Facebook Group Numeric ID to fetch events from"
-msgstr ""
-
-#: templates/admin/facebook-import-events.php:96
-msgid " Eg.Input value for group https://www.facebook.com/groups/123456789123456/ is \"123456789123456\""
-msgstr ""
-
-#: templates/admin/facebook-import-events.php:109
+#: templates/admin/facebook-import-events.php:110
 msgid "Select Page"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:118
+#: templates/admin/facebook-import-events.php:119
 msgid "Select Page for import events from it."
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:126
+#: templates/admin/facebook-import-events.php:127
 #: templates/admin/ical-import-events.php:73
 msgid "Import type"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:139
+#: templates/admin/facebook-import-events.php:140
 msgid "Author"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:142
+#: templates/admin/facebook-import-events.php:143
 msgid "Select Author"
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:144
+#: templates/admin/facebook-import-events.php:145
 msgid "Select event author for imported events. Default event author is current loggedin user."
 msgstr ""
 
-#: templates/admin/facebook-import-events.php:155
+#: templates/admin/facebook-import-events.php:156
 #: templates/admin/ical-import-events.php:92
 msgid "Import Event"
 msgstr ""
@@ -1285,68 +1264,84 @@ msgstr ""
 msgid "Slug for the event."
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:292
+#: templates/admin/import-facebook-events-settings.php:291
+msgid "Default Event Thumbnail"
+msgstr ""
+
+#: templates/admin/import-facebook-events-settings.php:317
+msgid "Event Thumbnail"
+msgstr ""
+
+#: templates/admin/import-facebook-events-settings.php:327
+msgid "Remove Event Thumbnail"
+msgstr ""
+
+#: templates/admin/import-facebook-events-settings.php:331
+msgid "This option will display this image in the event's grid view if the event does not have a featured image."
+msgstr ""
+
+#: templates/admin/import-facebook-events-settings.php:339
 msgid "Event Display Time Format"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:299
+#: templates/admin/import-facebook-events-settings.php:346
 msgid "12 Hours"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:300
+#: templates/admin/import-facebook-events-settings.php:347
 msgid "24 Hours"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:301
+#: templates/admin/import-facebook-events-settings.php:348
 msgid "WordPress Default"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:304
+#: templates/admin/import-facebook-events-settings.php:351
 msgid "Choose event display time format for front-end."
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:311
+#: templates/admin/import-facebook-events-settings.php:358
 msgid "Delete Import Facebook Events data on Uninstall"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:319
+#: templates/admin/import-facebook-events-settings.php:366
 msgid "Delete Import Facebook Events data like settings, scheduled imports, import history on Uninstall."
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:332
-#: templates/admin/import-facebook-events-settings.php:402
+#: templates/admin/import-facebook-events-settings.php:379
+#: templates/admin/import-facebook-events-settings.php:449
 msgid "Save Settings"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:341
-#: templates/admin/import-facebook-events-settings.php:348
+#: templates/admin/import-facebook-events-settings.php:388
+#: templates/admin/import-facebook-events-settings.php:395
 msgid "Google Maps API"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:359
+#: templates/admin/import-facebook-events-settings.php:406
 msgid "Google maps API Key (Required)"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:360
-#: templates/admin/import-facebook-events-settings.php:389
+#: templates/admin/import-facebook-events-settings.php:407
+#: templates/admin/import-facebook-events-settings.php:436
 msgid "How to get an API Key"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:361
-#: templates/admin/import-facebook-events-settings.php:390
+#: templates/admin/import-facebook-events-settings.php:408
+#: templates/admin/import-facebook-events-settings.php:437
 msgid "Find out more about API Key restrictions"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:371
-#: templates/admin/import-facebook-events-settings.php:377
+#: templates/admin/import-facebook-events-settings.php:418
+#: templates/admin/import-facebook-events-settings.php:424
 msgid "Google GeoLocation API"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:388
+#: templates/admin/import-facebook-events-settings.php:435
 msgid "Google GeoLocation API Key (Required)"
 msgstr ""
 
-#: templates/admin/import-facebook-events-settings.php:417
+#: templates/admin/import-facebook-events-settings.php:464
 msgid "Here"
 msgstr ""
 
