@@ -3,7 +3,7 @@
  * Plugin Name:       Import Social Events
  * Plugin URI:        http://xylusthemes.com/plugins/import-facebook-events/
  * Description:       Import Social Events allows you to import Facebook ( facebook.com ) events into your WordPress site.
- * Version:           1.8.1
+ * Version:           1.8.3
  * Author:            Xylus Themes
  * Author URI:        http://xylusthemes.com
  * License:           GPL-2.0+
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.1' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.3' ); }
 
 		/**
 		 * A dummy magic method to prevent Import_Facebook_Events from being unserialized.
@@ -113,7 +113,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.1' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.3' ); }
 
 
 		/**
@@ -127,12 +127,12 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 
 			// Plugin version.
 			if ( ! defined( 'IFE_VERSION' ) ) {
-				define( 'IFE_VERSION', '1.8.1' );
+				define( 'IFE_VERSION', '1.8.3' );
 			}
 
 			// Minimum Pro plugin version.
 			if ( ! defined( 'IFE_MIN_PRO_VERSION' ) ) {
-				define( 'IFE_MIN_PRO_VERSION', '1.7.5' );
+				define( 'IFE_MIN_PRO_VERSION', '1.7.6' );
 			}
 
 			// Plugin folder Path.
@@ -224,6 +224,15 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @return void
 		 */
 		public function ife_setting_doc_links ( $links ) {
+			$upgrate_to_pro = '';
+			if( !ife_is_pro() ){
+				$upgrate_to_pro = sprintf(
+                    '<a href="%s" target="_blank" style="color:#1da867;font-weight: 900;">%s</a>',
+                    esc_url( 'https://xylusthemes.com/plugins/import-facebook-events/' ),
+                    esc_html__( 'Upgrade to Pro', 'import-facebook-events' )
+                );
+			}
+
 			$ife_setting_doc_link = array(
                 'ife-event-setting' => sprintf(
                     '<a href="%s">%s</a>',
@@ -235,6 +244,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
                     esc_url( 'https://docs.xylusthemes.com/docs/import-facebook-events/' ),
                     esc_html__( 'Docs', 'import-facebook-events' )
                 ),
+				'ife-event-pro-link' => $upgrate_to_pro,
             );
             return array_merge( $links, $ife_setting_doc_link );
 		}
@@ -335,5 +345,6 @@ function ife_activate_import_facebook_events() {
 	global $ife_events;
 	$ife_events->cpt->register_event_post_type();
 	flush_rewrite_rules();
+	add_option( 'ife_plugin_activated', true );
 }
 register_activation_hook( __FILE__, 'ife_activate_import_facebook_events' );
