@@ -3,7 +3,7 @@
  * Plugin Name:       Import Social Events
  * Plugin URI:        http://xylusthemes.com/plugins/import-facebook-events/
  * Description:       Import Social Events allows you to import Facebook ( facebook.com ) events into your WordPress site.
- * Version:           1.8.7
+ * Version:           1.8.8
  * Author:            Xylus Themes
  * Author URI:        http://xylusthemes.com
  * License:           GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @var object Instance of Import_Facebook_Events
 		 */
 		private static $instance;
-		public $common, $cpt, $facebook, $admin, $manage_import, $ife, $tec, $em, $eventon, $event_organizer, $aioec, $my_calendar, $ee4, $ical_parser, $ical, $fb_authorize, $common_pro, $facebook_pro, $cron, $ical_parser_aioec, $eventprime;
+		public $common, $cpt, $facebook, $admin, $manage_import, $ife, $tec, $em, $eventon, $event_organizer, $aioec, $my_calendar, $ee4, $ical_parser, $ical, $fb_authorize, $common_pro, $facebook_pro, $cron, $ical_parser_aioec, $eventprime, $ajax;
 
 		/**
 		 * Main Import Facebook Events Instance.
@@ -63,6 +63,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 
 				self::$instance->includes();
 				self::$instance->common   = new Import_Facebook_Events_Common();
+				self::$instance->ajax     = new Import_Facebook_Events_Ajax();
 				self::$instance->cpt      = new Import_Facebook_Events_Cpt();
 				self::$instance->facebook = new Import_Facebook_Events_Facebook();
 				self::$instance->admin    = new Import_Facebook_Events_Admin();
@@ -106,7 +107,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.7' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.8' ); }
 
 		/**
 		 * A dummy magic method to prevent Import_Facebook_Events from being unserialized.
@@ -114,7 +115,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.7' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.8' ); }
 
 
 		/**
@@ -128,12 +129,12 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 
 			// Plugin version.
 			if ( ! defined( 'IFE_VERSION' ) ) {
-				define( 'IFE_VERSION', '1.8.7' );
+				define( 'IFE_VERSION', '1.8.8' );
 			}
 
 			// Minimum Pro plugin version.
 			if ( ! defined( 'IFE_MIN_PRO_VERSION' ) ) {
-				define( 'IFE_MIN_PRO_VERSION', '1.7.7' );
+				define( 'IFE_MIN_PRO_VERSION', '1.7.9' );
 			}
 
 			// Plugin folder Path.
@@ -172,6 +173,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		private function includes() {
 
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-common.php';
+			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-ajax.php';
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-list-table.php';
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-admin.php';
 			if ( ife_is_pro() ) {
@@ -294,6 +296,11 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		public function ife_enqueue_script() {
 
 			// Enqueue script here.
+			$js_dir = IFE_PLUGIN_URL . 'assets/js/';
+			wp_enqueue_script( 'ife-ajax-pagi', $js_dir . 'ife-ajax-pagi.js', array( 'jquery' ), IFE_VERSION, true );
+			wp_localize_script( 'ife-ajax-pagi', 'ife_ajax', array(
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			));
 		}
 
 	}
