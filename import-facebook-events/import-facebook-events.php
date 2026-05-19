@@ -3,7 +3,7 @@
  * Plugin Name:       Import Social Events
  * Plugin URI:        http://xylusthemes.com/plugins/import-facebook-events/
  * Description:       Import Social Events allows you to import Facebook ( facebook.com ) events into your WordPress site.
- * Version:           1.8.8
+ * Version:           1.8.9
  * Author:            Xylus Themes
  * Author URI:        http://xylusthemes.com
  * License:           GPL-2.0+
@@ -34,7 +34,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @var object Instance of Import_Facebook_Events
 		 */
 		private static $instance;
-		public $common, $cpt, $facebook, $admin, $manage_import, $ife, $tec, $em, $eventon, $event_organizer, $aioec, $my_calendar, $ee4, $ical_parser, $ical, $fb_authorize, $common_pro, $facebook_pro, $cron, $ical_parser_aioec, $eventprime, $ajax;
+		public $common, $cpt, $facebook, $admin, $manage_import, $ife, $tec, $em, $eventon, $event_organizer, $aioec, $my_calendar, $ee4, $ical_parser, $ical, $fb_authorize, $common_pro, $facebook_pro, $cron, $ical_parser_aioec, $eventprime, $ajax, $htmltblock;
 
 		/**
 		 * Main Import Facebook Events Instance.
@@ -67,6 +67,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 				self::$instance->cpt      = new Import_Facebook_Events_Cpt();
 				self::$instance->facebook = new Import_Facebook_Events_Facebook();
 				self::$instance->admin    = new Import_Facebook_Events_Admin();
+				self::$instance->htmltblock = new Import_Facebook_Events_Html_To_Blocks();
 				
 				self::$instance->ical_parser 	   = new Import_Facebook_Events_Ical_Parser();
 				self::$instance->ical_parser_aioec = new Import_Facebook_Events_Ical_Parser_AIOEC();
@@ -107,7 +108,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.8' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.9' ); }
 
 		/**
 		 * A dummy magic method to prevent Import_Facebook_Events from being unserialized.
@@ -115,7 +116,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.8' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.9' ); }
 
 
 		/**
@@ -129,7 +130,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 
 			// Plugin version.
 			if ( ! defined( 'IFE_VERSION' ) ) {
-				define( 'IFE_VERSION', '1.8.8' );
+				define( 'IFE_VERSION', '1.8.9' );
 			}
 
 			// Minimum Pro plugin version.
@@ -176,6 +177,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-ajax.php';
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-list-table.php';
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-admin.php';
+			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-html-to-blocks.php';
 			if ( ife_is_pro() ) {
 				require_once IFEPRO_PLUGIN_DIR . 'includes/class-import-facebook-events-manage-import.php';
 			} else {
