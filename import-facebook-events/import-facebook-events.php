@@ -3,7 +3,7 @@
  * Plugin Name:       Import Social Events
  * Plugin URI:        http://xylusthemes.com/plugins/import-facebook-events/
  * Description:       Import Social Events allows you to import Facebook ( facebook.com ) events into your WordPress site.
- * Version:           1.8.9
+ * Version:           1.9.0
  * Author:            Xylus Themes
  * Author URI:        http://xylusthemes.com
  * License:           GPL-2.0+
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __clone() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.9' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.9.0' ); }
 
 		/**
 		 * A dummy magic method to prevent Import_Facebook_Events from being unserialized.
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 * @since 1.0.0
 		 */
 		public function __wakeup() {
-			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.8.9' ); }
+			_doing_it_wrong( __FUNCTION__, esc_attr__( 'Cheatin&#8217; huh?', 'import-facebook-events' ), '1.9.0' ); }
 
 
 		/**
@@ -130,12 +130,12 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 
 			// Plugin version.
 			if ( ! defined( 'IFE_VERSION' ) ) {
-				define( 'IFE_VERSION', '1.8.9' );
+				define( 'IFE_VERSION', '1.9.0' );
 			}
 
 			// Minimum Pro plugin version.
 			if ( ! defined( 'IFE_MIN_PRO_VERSION' ) ) {
-				define( 'IFE_MIN_PRO_VERSION', '1.7.9' );
+				define( 'IFE_MIN_PRO_VERSION', '1.9.0' );
 			}
 
 			// Plugin folder Path.
@@ -204,6 +204,11 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 			require_once IFE_PLUGIN_DIR . 'includes/class-import-facebook-events-eventprime.php';
 			// Gutenberg Block.
 			require_once IFE_PLUGIN_DIR . 'blocks/facebook-events/index.php';
+
+			// Feed Widget Builder
+			if ( file_exists( IFE_PLUGIN_DIR . 'ifepro-feed/feed-init.php' ) ) {
+				require_once IFE_PLUGIN_DIR . 'ifepro-feed/feed-init.php';
+			}
 		}
 
 		/**
@@ -215,6 +220,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 		 */
 		public function load_textdomain() {
 
+			// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 			load_plugin_textdomain(
 				'import-facebook-events',
 				false,
@@ -302,6 +308,7 @@ if ( ! class_exists( 'Import_Facebook_Events' ) ) :
 			wp_enqueue_script( 'ife-ajax-pagi', $js_dir . 'ife-ajax-pagi.js', array( 'jquery' ), IFE_VERSION, true );
 			wp_localize_script( 'ife-ajax-pagi', 'ife_ajax', array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'ife_ajax_pagi_nonce_action' ),
 			));
 		}
 

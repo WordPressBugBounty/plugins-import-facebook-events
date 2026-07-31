@@ -64,6 +64,16 @@ class Import_Facebook_Events_Admin {
 
 		add_menu_page( __( 'Import Facebook Events', 'import-facebook-events' ), __( 'Facebook Import', 'import-facebook-events' ), 'manage_options', 'facebook_import', array( $this, 'admin_page' ), 'dashicons-calendar-alt', '30' );
 		$submenu['facebook_import'][] = array( __( 'Dashboard', 'import-facebook-events' ), 'manage_options',  admin_url( 'admin.php?page=facebook_import&tab=dashboard' )  );
+		if ( post_type_exists( 'ifepro_live_feed' ) ) {
+			$submenu['facebook_import'][] = array(
+				'<span style="display:flex; justify-content:space-between; align-items:center; width:100%;">' 
+					. __( 'Facebook Widget', 'import-facebook-events' ) 
+					. '<span style="background:#4CAF50; margin-left:6px; flex-shrink:0;height: 22px;border-radius: 3px;color: #FFF;font-size: 12px;line-height: 18px;font-weight: 600;display: inline-flex;padding: 0 4px;align-items: center;">NEW</span>'
+				. '</span>',
+				'manage_options',
+				'edit.php?post_type=ifepro_live_feed'
+			);
+		}
 		$submenu['facebook_import'][] = array( __( 'Facebook Import', 'import-facebook-events' ), 'manage_options', admin_url( 'admin.php?page=facebook_import&tab=facebook' ) );
 		$submenu['facebook_import'][] = array( __( 'Facebook .ics Import', 'import-facebook-events' ), 'manage_options', admin_url( 'admin.php?page=facebook_import&tab=ics' ) );
 		$submenu['facebook_import'][] = array( __( 'Schedule Import', 'import-facebook-events' ), 'manage_options', admin_url( 'admin.php?page=facebook_import&tab=scheduled' ) );
@@ -118,6 +128,7 @@ class Import_Facebook_Events_Admin {
 	public function ife_wp_cron_check() {
 		global $ife_errors;
 		
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( ! is_admin() || empty($_GET['page']) || empty($_GET['tab']) || $_GET['page'] !== 'facebook_import' || $_GET['tab']  !== 'scheduled' ) {
 			return;
 		}
@@ -508,6 +519,12 @@ class Import_Facebook_Events_Admin {
 				$submenu_file = admin_url( 'admin.php?page=facebook_import&tab='.$tab );
 			}
 		}
+
+		global $post_type;
+		if ( 'ifepro_live_feed' === $post_type ) {
+			$submenu_file = 'edit.php?post_type=ifepro_live_feed';
+		}
+
 		return $submenu_file;
 	}
 
@@ -517,6 +534,7 @@ class Import_Facebook_Events_Admin {
 	 * @return void
 	 */
 	public function ife_view_import_history_handler() {
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 		define( 'IFRAME_REQUEST', true );
 		iframe_header();
 		$history_id = isset( $_GET['history'] ) ? absint( $_GET['history'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
